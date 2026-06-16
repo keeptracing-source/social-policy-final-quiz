@@ -515,8 +515,10 @@ function oxAns(pick){
   const q=oxList[oxIdx], ok=(pick===q.a);
   const exp=$('#oxExp'); const s=LS.ox;
   if(ok)s.right++;else s.wrong++; LS.ox=s;
-  $('#oxO').classList.add(q.a?'sel-correct':(pick?'sel-wrong':''));
-  $('#oxX').classList.add(!q.a?'sel-correct':(!pick?'sel-wrong':''));
+  const oCls=q.a?'sel-correct':(pick===true?'sel-wrong':'');
+  const xCls=!q.a?'sel-correct':(pick===false?'sel-wrong':'');
+  if(oCls)$('#oxO').classList.add(oCls);
+  if(xCls)$('#oxX').classList.add(xCls);
   exp.className='explain show '+(ok?'right':'bad');
   exp.innerHTML=`<span class="verdict">${ok?'✅ 정답!':'❌ 오답'} · 정답은 ${q.a?'⭕ (맞다)':'❌ (틀리다)'}</span>${q.e}`;
   $('#oxNextRow').classList.remove('hidden');
