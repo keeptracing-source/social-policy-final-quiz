@@ -69,6 +69,7 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 /* flashcard */
 .fc-term{font-size:23px;font-weight:800;letter-spacing:-.5px;flex:1;display:flex;align-items:center}
 .fc-def{font-size:16px;line-height:1.7;color:var(--ink);flex:1;display:flex;align-items:center}
+.fc-term>div,.fc-def>div{width:100%}
 .fc-hint{text-align:center;color:var(--muted);font-size:12.5px;margin-top:10px}
 .fc-def b{color:var(--blue)}
 .fc-def .hl{color:var(--red);font-weight:700}
@@ -470,8 +471,8 @@ function renderFlash(){
     <div class="card" id="fcard">
       <span class="tag">${CATLABEL[c.c]}${isKnown?' · ✅외움':''}</span>
       ${fcFlip
-        ? `<div class="fc-def">${c.d}</div><div class="fc-hint">탭하면 개념으로 돌아갑니다</div>`
-        : `<div class="fc-term">${c.t}</div><div class="fc-hint">👆 카드를 탭하면 정의가 나옵니다</div>`}
+        ? `<div class="fc-def"><div>${c.d}</div></div><div class="fc-hint">탭하면 개념으로 돌아갑니다</div>`
+        : `<div class="fc-term"><div>${c.t}</div></div><div class="fc-hint">👆 카드를 탭하면 정의가 나옵니다</div>`}
     </div>
     <div class="actions">
       <button class="btn again" onclick="fcNext(false)">🔁 다시</button>
